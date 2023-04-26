@@ -1,0 +1,29 @@
+- name: '1'
+  dependencies: []
+- name: '2'
+  dependencies:
+    - '1'
+- name: '3'
+  dependencies:
+    - '1'
+    - '6'
+- name: '4'
+  dependencies:
+    - '3'
+    - '1'
+    - '9'  # Кто это??
+- name: '5'
+  dependencies:
+    - '3'
+    - '4'
+- name: '6'
+  dependencies:
+    - '2'
+- name: '7'
+  dependencies: []
+- name: '8'
+  dependencies:
+    - '1'
+    - '5'
+    - '6'
+    - '7'
