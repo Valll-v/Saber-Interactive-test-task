@@ -8,7 +8,7 @@ from task_worker import form_map, upload_dependencies_for_all_tasks
 class TestTaskWorkerOK(unittest.TestCase):
 
     def test_task_read(self):
-        tasks_data = read_file('task_ok.yaml')
+        tasks_data = read_file('tasks_data/task_ok.yaml')
         self.assertEqual(tasks_data, [{'name': '1', 'dependencies': []},
                                       {'name': '2', 'dependencies': ['1']},
                                       {'name': '3', 'dependencies': ['1', '6']},
@@ -19,7 +19,7 @@ class TestTaskWorkerOK(unittest.TestCase):
                                       {'name': '8', 'dependencies': ['1', '5', '6', '7']}])
 
     def test_task_to_dict(self):
-        tasks_data = read_file('task_ok.yaml')
+        tasks_data = read_file('tasks_data/task_ok.yaml')
         task_to_dict = form_map(tasks_data)
         self.assertEqual(task_to_dict, {'1': [],
                                         '2': ['1'],
@@ -31,7 +31,7 @@ class TestTaskWorkerOK(unittest.TestCase):
                                         '8': ['1', '5', '6', '7']})
 
     def test_task_load_dependencies(self):
-        tasks_data = read_file('task_ok.yaml')
+        tasks_data = read_file('tasks_data/task_ok.yaml')
         task_to_dict = form_map(tasks_data)
         task_uploaded_dependencies = upload_dependencies_for_all_tasks(task_to_dict)
         self.assertEqual(task_uploaded_dependencies, {'1': [],
@@ -46,8 +46,8 @@ class TestTaskWorkerOK(unittest.TestCase):
 
 class TestTaskWorkerSelfException(unittest.TestCase):
 
-    def test_task3_read(self):
-        tasks_data = read_file('task_self_exception.yaml')
+    def test_task_read(self):
+        tasks_data = read_file('tasks_data/task_self_exception.yaml')
         self.assertEqual(tasks_data, [{'name': '1', 'dependencies': []},
                                       {'name': '2', 'dependencies': ['1']},
                                       {'name': '3', 'dependencies': ['1', '6']},
@@ -58,7 +58,7 @@ class TestTaskWorkerSelfException(unittest.TestCase):
                                       {'name': '8', 'dependencies': ['1', '5', '6', '7']}])
 
     def test_task_to_dict(self):
-        tasks_data = read_file('task_self_exception.yaml')
+        tasks_data = read_file('tasks_data/task_self_exception.yaml')
         task_to_dict = form_map(tasks_data)
         self.assertEqual(task_to_dict, {'1': [],
                                         '2': ['1'],
@@ -70,7 +70,7 @@ class TestTaskWorkerSelfException(unittest.TestCase):
                                         '8': ['1', '5', '6', '7']})
 
     def test_task_load_dependencies(self):
-        tasks_data = read_file('task_self_exception.yaml')
+        tasks_data = read_file('tasks_data/task_self_exception.yaml')
         task_to_dict = form_map(tasks_data)
         with self.assertRaises(SelfDependencyException):
             upload_dependencies_for_all_tasks(task_to_dict)
@@ -79,7 +79,7 @@ class TestTaskWorkerSelfException(unittest.TestCase):
 class TestTaskWorkerUndefinedException(unittest.TestCase):
 
     def test_task_undefined_read(self):
-        tasks_data = read_file('task_undefined.yaml')
+        tasks_data = read_file('tasks_data/task_undefined.yaml')
         self.assertEqual(tasks_data, [{'name': '1', 'dependencies': []},
                                       {'name': '2', 'dependencies': ['1']},
                                       {'name': '3', 'dependencies': ['1', '6']},
@@ -90,7 +90,7 @@ class TestTaskWorkerUndefinedException(unittest.TestCase):
                                       {'name': '8', 'dependencies': ['1', '5', '6', '7']}])
 
     def test_task_to_dict(self):
-        tasks_data = read_file('task_undefined.yaml')
+        tasks_data = read_file('tasks_data/task_undefined.yaml')
         task_to_dict = form_map(tasks_data)
         self.assertEqual(task_to_dict, {'1': [],
                                         '2': ['1'],
@@ -102,7 +102,7 @@ class TestTaskWorkerUndefinedException(unittest.TestCase):
                                         '8': ['1', '5', '6', '7']})
 
     def test_task_load_dependencies(self):
-        tasks_data = read_file('task_undefined.yaml')
+        tasks_data = read_file('tasks_data/task_undefined.yaml')
         task_to_dict = form_map(tasks_data)
         with self.assertRaises(UndefinedDependencyException):
             upload_dependencies_for_all_tasks(task_to_dict)
@@ -111,7 +111,7 @@ class TestTaskWorkerUndefinedException(unittest.TestCase):
 class TestTaskWorkerCircularException(unittest.TestCase):
 
     def test_task_undefined_read(self):
-        tasks_data = read_file('task_circular.yaml')
+        tasks_data = read_file('tasks_data/task_circular.yaml')
         self.assertEqual(tasks_data, [{'name': '1', 'dependencies': []},
                                       {'name': '2', 'dependencies': ['1']},
                                       {'name': '3', 'dependencies': ['1', '6']},
@@ -122,7 +122,7 @@ class TestTaskWorkerCircularException(unittest.TestCase):
                                       {'name': '8', 'dependencies': ['1', '5', '6', '7']}])
 
     def test_task_to_dict(self):
-        tasks_data = read_file('task_circular.yaml')
+        tasks_data = read_file('tasks_data/task_circular.yaml')
         task_to_dict = form_map(tasks_data)
         self.assertEqual(task_to_dict, {'1': [],
                                         '2': ['1'],
@@ -134,7 +134,7 @@ class TestTaskWorkerCircularException(unittest.TestCase):
                                         '8': ['1', '5', '6', '7']})
 
     def test_task_load_dependencies(self):
-        tasks_data = read_file('task_circular.yaml')
+        tasks_data = read_file('tasks_data/task_circular.yaml')
         task_to_dict = form_map(tasks_data)
         with self.assertRaises(CircularDependencyException):
             upload_dependencies_for_all_tasks(task_to_dict)

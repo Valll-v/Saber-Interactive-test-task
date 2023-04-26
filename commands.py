@@ -1,6 +1,8 @@
 from abc import ABC
 
-from writer import write_list, write_task_dependencies
+from build_worker import form_build_tasks
+from exceptions import CustomAppException
+from writer import write_list, write_task_dependencies, write_build_dependencies
 
 help_text = """
 Команды:
@@ -35,7 +37,12 @@ class GetCommand(Command):
         elif option == 'task':
             write_task_dependencies(arg, data.get('tasks_uploaded_dependencies'))
         else:
-            print('aboba)')
+            try:
+                build_data = form_build_tasks(data.get('tasks_uploaded_dependencies'), arg, data.get('builds'))
+            except CustomAppException as ex:
+                print(ex)
+                return
+            write_build_dependencies(build_data)
 
 
 class ListCommand(Command):

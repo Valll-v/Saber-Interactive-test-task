@@ -10,6 +10,17 @@ def write_task_dependencies(task, data: dict):
         return
     print(f'Информация о таске')
     print(f'Название: {task}')
+    if not data.get(task):
+        print('Зависимостей не найдено')
+        return
     print(f'Зависимости:')
     for dep in data.get(task):
+        print(f'\t- {dep}')
+
+
+def write_build_dependencies(build_data: dict):
+    print(f'Информация о билде')
+    print(f'Название: {build_data.get("name")}')
+    print(f'Таски: ')
+    for dep in build_data.get('tasks'):
         print(f'\t- {dep}')

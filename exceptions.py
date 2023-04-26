@@ -1,14 +1,22 @@
-class SelfDependencyException(Exception):
+class CustomAppException(Exception):
     pass
 
 
-class CircularDependencyException(Exception):
+class SelfDependencyException(CustomAppException):
     pass
 
 
-class UndefinedDependencyException(Exception):
+class CircularDependencyException(CustomAppException):
     pass
 
 
-class UndefinedCommandException(Exception):
+class UndefinedDependencyException(CustomAppException):
+    pass
+
+
+class UndefinedCommandException(CustomAppException):
+    pass
+
+
+class UndefinedBuildException(CustomAppException):
     pass

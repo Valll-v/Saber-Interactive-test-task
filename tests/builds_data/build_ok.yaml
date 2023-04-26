@@ -1,0 +1,8 @@
+- name: build1
+  tasks:
+  - '8'
+- name: build2
+  tasks:
+  - '6'
+  - '1'
+  - '4'

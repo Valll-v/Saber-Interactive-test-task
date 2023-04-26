@@ -19,6 +19,8 @@ def main():
 
     while True:
         data = input()
+        if not data:
+            continue
         command, *args = data.split()
         option = args[0] if args else None
         arg = args[1] if len(args) > 1 else None
