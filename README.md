@@ -1,7 +1,8 @@
 Требования:
 - Установленный Python версии 3+
 - Установленный git
-Использованные библиотеки yaml и unittest \
+- Библиотеки yaml и unittest (последнее для запуска тестов) \
+\
 Шаги для запуска в терминале (любом):
 - git clone https://github.com/Valll-v/Saber-Interactive-test-task
 - cd Saber-Interactive-test-task
