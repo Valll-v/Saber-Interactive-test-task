@@ -1,9 +1,9 @@
 import unittest
 
-from exceptions import *
-from reader import read_file
-from build_worker import form_map as build_form_map, form_build_tasks
-from task_worker import form_map as task_form_map, upload_dependencies_for_all_tasks
+from ..exceptions import *
+from ..reader import read_file
+from ..build_worker import form_map as build_form_map, form_build_tasks
+from ..task_worker import form_map as task_form_map, upload_dependencies_for_all_tasks
 
 
 class TestBuildWorkerOK(unittest.TestCase):

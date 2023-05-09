@@ -1,8 +1,8 @@
 import unittest
 
-from exceptions import *
-from reader import read_file
-from task_worker import form_map, upload_dependencies_for_all_tasks
+from ..exceptions import *
+from ..reader import read_file
+from ..task_worker import form_map, upload_dependencies_for_all_tasks
 
 
 class TestTaskWorkerOK(unittest.TestCase):
